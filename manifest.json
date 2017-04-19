@@ -1,0 +1,18 @@
+{
+  "manifest_version": 2,
+  "name": "BoredPanda Single Page Application",
+  "description": "This extension shows load all post related pages into a single one",
+  "version": "0.1",
+  "browser_action": {
+    "default_icon": "panda_icon.png",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "http://www.boredpanda.com/"
+  ]
+}
