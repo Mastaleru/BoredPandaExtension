@@ -6,7 +6,7 @@ function onTabCreated (tab){
     checkIfBoredPandaTab(tab);
 }
 function onTabUpdated( tabId,  changeInfo,  tab){
-    if(changeInfo.status === "pending"){
+    if(changeInfo.status === "complete"){
         checkIfBoredPandaTab(tab);
     }
 
