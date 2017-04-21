@@ -29,7 +29,7 @@ function renderContent(text) {
 
 }
 
-function elementIsBelow(elm, threshold, mode) {
+function elementIsBelow(elm, threshold) {
     threshold = threshold || 0;
     var rect = elm.getBoundingClientRect();
     var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
@@ -49,6 +49,10 @@ if (checkIfPagintion && checkIfPagintion.length === 1) {
     var paginationAnchor = paginationCtn.getElementsByClassName("pagination")[0];
     var paginationText = paginationAnchor.outerText;
     paginationAnchor.style.display = "none";
+    var loaderElement = document.createElement("div");
+    loaderElement.id="boredpandaloader";
+    loaderElement.innerHTML = '<div class="bpspinner_e"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>';
+    paginationAnchor.parentNode.insertBefore(loaderElement, paginationAnchor.nextSibling);
 
     const regex = /PAGE ([1-9]{0,2})\/([0-9]{0,2}) >$/g;
     var m;
@@ -69,7 +73,7 @@ if (checkIfPagintion && checkIfPagintion.length === 1) {
         htmlPages["page" + i] = null;
     }
 
-    var dist = -50;
+    var dist = -200;
 
     var blockRequest = false;
     window.onscroll = function () {
@@ -87,6 +91,13 @@ if (checkIfPagintion && checkIfPagintion.length === 1) {
                         });
                     }
                 }
+            }
+            if(currentPage == totalPages){
+                var boredpandaLoader = document.getElementById("boredpandaloader");
+                if(boredpandaLoader){
+                    boredpandaLoader.style.display = "none";
+                }
+
             }
         }
 
